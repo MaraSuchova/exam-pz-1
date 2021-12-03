@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<table id="myTable">
+    <tr>
+        <th># by list</th>
+        <th>Rank</th>
+        <th>Full name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Sergeant</td>
+        <td>Stepanov Stepan Stepanovich</td>
+        <td>33</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Lieutenant</td>
+        <td>Fedorov Fedor Fedorovich</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Major</td>
+        <td>Antonenko Anton Antonovich</td>
+        <td>31</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Average age</td>
+        <td>?</td>
+    </tr>
+</table>
+<button id="startButton">Start</button>
+</body>
+<script>
+    document.getElementById('startButton').addEventListener('click', getAverageAge);
+    function getAverageAge() {
+        let cells = document.getElementsByTagName('td');
+        let ageSum = 0;
+        let recordsCount = 0;
+        for(let i = 0; i < cells.length; i++) {
+            if((i + 1) % 4 === 0 && Number.parseInt(cells[i].innerText)) {
+                ageSum += Number.parseInt(cells[i].innerText);
+                recordsCount++;
+            }
+        }
+        cells[cells.length - 1].innerText = ageSum / recordsCount;
+    }
+</script>
+</html>
